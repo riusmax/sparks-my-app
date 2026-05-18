@@ -10,6 +10,7 @@ import { WebBadge } from '@/components/web-badge';
 import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
 
 import DeviceInfoModule from '../../modules/device-info';
+import { useEffect, useState } from 'react';
 
 function getDevMenuHint() {
   if (Platform.OS === 'web') {
@@ -31,10 +32,23 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
+  const [batteryLevel, setBatteryLevel] = useState(0)
+  const [thermalState, setThermalState] = useState('')
+  useEffect(() => {
+    const init = async () => {
+      const result = await DeviceInfoModule.getBatteryLevelAsync()
+      const resultThermal = await DeviceInfoModule.getThermalStateAsync()
+      setBatteryLevel(result)
+      setThermalState(resultThermal)
+    }
+    init()
+  }, [])
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
         <ThemedText>{DeviceInfoModule.getDeviceModel()}</ThemedText>
+        <ThemedText>{batteryLevel}%</ThemedText>
+        <ThemedText>{thermalState}</ThemedText>
       </SafeAreaView>
     </ThemedView>
   );
