@@ -1,8 +1,11 @@
 package expo.modules.deviceinfo
 
+import android.content.Context
+import android.os.Build
+import android.os.PowerManager
+import expo.modules.kotlin.Promise
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
-import java.net.URL
 
 class DeviceInfoModule : Module() {
   // Each module class must implement the definition function. The definition consists of components
