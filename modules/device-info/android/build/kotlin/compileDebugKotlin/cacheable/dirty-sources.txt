@@ -1,0 +1,2 @@
+F:\Dev\Formations\Sparks\TP\my-app\modules\device-info\android\src\main\java\expo\modules\deviceinfo\DeviceInfoView.kt
+F:\Dev\Formations\Sparks\TP\my-app\modules\device-info\android\src\main\java\expo\modules\deviceinfo\DeviceInfoModule.kt
