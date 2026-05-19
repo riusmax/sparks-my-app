@@ -3,10 +3,17 @@ import React from 'react';
 import { useColorScheme } from 'react-native';
 
 import { Colors } from '@/constants/theme';
+import { useAuth } from '@/contexts/auth-context';
+import AuthScreen from '@/screens/auth-screen';
 
 export default function AppTabs() {
-  const scheme = useColorScheme();
+  const scheme = useColorScheme()
   const colors = Colors[scheme === 'unspecified' ? 'light' : scheme];
+  const { state: { user, token} } = useAuth()
+
+  if (!user || !token) {
+    return <AuthScreen />
+  }
 
   return (
     <NativeTabs

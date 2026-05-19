@@ -36,7 +36,14 @@
           }
         }
       ],
-      "./modules/device-info/app.plugin.js"
+      "./modules/device-info/app.plugin.js",
+      [
+        "expo-secure-store",
+        {
+          "configureAndroidBackup": true,
+          "faceIDPermission": "Allow this app to use Face ID to secure data"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
